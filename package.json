@@ -1,0 +1,27 @@
+{
+  "name": "colorslite",
+  "version": "0.0.1",
+  "description": "A lightweight colors package for CLI's",
+  "main": "colorslite.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/garrettjoecox/colorslite"
+  },
+  "keywords": [
+    "better",
+    "colors",
+    "lite",
+    "light",
+    "lightweight",
+    "cli",
+    "command",
+    "line",
+    "interface"
+  ],
+  "author": "Garrett Cox <garrettjcox@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/garrettjoecox/colorslite/issues"
+  },
+  "homepage": "https://github.com/garrettjoecox/colorslite"
+}
