@@ -1,47 +1,55 @@
 
 var getters = {
 
-  reset:          { get: function(){ return '\x1B[0m' + this.valueOf() + '\x1B[0m';  } },
-  bold:           { get: function(){ return '\x1B[1m' + this.valueOf() + '\x1B[0m'; } },
-  dim:            { get: function(){ return '\x1B[2m' + this.valueOf() + '\x1B[0m'; } },
-  underline:      { get: function(){ return '\x1B[4m' + this.valueOf() + '\x1B[0m'; } },
-  blink:          { get: function(){ return '\x1B[5m' + this.valueOf() + '\x1B[0m'; } },
-  inverse:        { get: function(){ return '\x1B[7m' + this.valueOf() + '\x1B[0m'; } },
-  hidden:         { get: function(){ return '\x1B[8m' + this.valueOf() + '\x1B[0m'; } },
+  reset:     colorGetter(0, 0),
+  bold:      colorGetter(1, 0),
+  dim:       colorGetter(2, 0),
+  underline: colorGetter(4, 0),
+  blink:     colorGetter(5, 0),
+  inverse:   colorGetter(7, 0),
+  hidden:    colorGetter(8, 0),
 
-  black:    { get: function(){ return '\x1B[30m' + this.valueOf() + '\x1B[39m'; } },
-  red:      { get: function(){ return '\x1B[31m' + this.valueOf() + '\x1B[39m'; } },
-  green:    { get: function(){ return '\x1B[32m' + this.valueOf() + '\x1B[39m'; } },
-  yellow:   { get: function(){ return '\x1B[33m' + this.valueOf() + '\x1B[39m'; } },
-  blue:     { get: function(){ return '\x1B[34m' + this.valueOf() + '\x1B[39m'; } },
-  magenta:  { get: function(){ return '\x1B[35m' + this.valueOf() + '\x1B[39m'; } },
-  cyan:     { get: function(){ return '\x1B[36m' + this.valueOf() + '\x1B[39m'; } },
-  white:    { get: function(){ return '\x1B[37m' + this.valueOf() + '\x1B[39m'; } },
-  gray:     { get: function(){ return '\x1B[90m' + this.valueOf() + '\x1B[39m'; } },
-  lRed:     { get: function(){ return '\x1B[91m' + this.valueOf() + '\x1B[39m'; } },
-  lGreen:   { get: function(){ return '\x1B[92m' + this.valueOf() + '\x1B[39m'; } },
-  lYellow:  { get: function(){ return '\x1B[93m' + this.valueOf() + '\x1B[39m'; } },
-  lBlue:    { get: function(){ return '\x1B[94m' + this.valueOf() + '\x1B[39m'; } },
-  lMagenta: { get: function(){ return '\x1B[95m' + this.valueOf() + '\x1B[39m'; } },
-  lCyan:    { get: function(){ return '\x1B[96m' + this.valueOf() + '\x1B[39m'; } },
+  black:    colorGetter(30, 39),
+  red:      colorGetter(31, 39),
+  green:    colorGetter(32, 39),
+  yellow:   colorGetter(33, 39),
+  blue:     colorGetter(34, 39),
+  magenta:  colorGetter(35, 39),
+  cyan:     colorGetter(36, 39),
+  white:    colorGetter(37, 39),
+  gray:     colorGetter(90, 39),
+  lRed:     colorGetter(91, 39),
+  lGreen:   colorGetter(92, 39),
+  lYellow:  colorGetter(93, 39),
+  lBlue:    colorGetter(94, 39),
+  lMagenta: colorGetter(95, 39),
+  lCyan:    colorGetter(96, 39),
 
-  bgBlack:    { get: function(){ return '\x1B[40m'  + this.valueOf() + '\x1B[0m'; } },
-  bgRed:      { get: function(){ return '\x1B[41m'  + this.valueOf() + '\x1B[0m'; } },
-  bgGreen:    { get: function(){ return '\x1B[42m'  + this.valueOf() + '\x1B[0m'; } },
-  bgYellow:   { get: function(){ return '\x1B[43m'  + this.valueOf() + '\x1B[0m'; } },
-  bgBlue:     { get: function(){ return '\x1B[44m'  + this.valueOf() + '\x1B[0m'; } },
-  bgMagenta:  { get: function(){ return '\x1B[45m'  + this.valueOf() + '\x1B[0m'; } },
-  bgCyan:     { get: function(){ return '\x1B[46m'  + this.valueOf() + '\x1B[0m'; } },
-  bgWhite:    { get: function(){ return '\x1B[47m'  + this.valueOf() + '\x1B[0m'; } },
-  bgGray:     { get: function(){ return '\x1B[100m' + this.valueOf() + '\x1B[0m'; } },
-  bglRed:     { get: function(){ return '\x1B[101m' + this.valueOf() + '\x1B[0m'; } },
-  bglGreen:   { get: function(){ return '\x1B[102m' + this.valueOf() + '\x1B[0m'; } },
-  bglYellow:  { get: function(){ return '\x1B[103m' + this.valueOf() + '\x1B[0m'; } },
-  bglBlue:    { get: function(){ return '\x1B[104m' + this.valueOf() + '\x1B[0m'; } },
-  bglMagenta: { get: function(){ return '\x1B[105m' + this.valueOf() + '\x1B[0m'; } },
-  bglCyan:    { get: function(){ return '\x1B[106m' + this.valueOf() + '\x1B[0m'; } },
+  bgBlack:    colorGetter(40, 0),
+  bgRed:      colorGetter(41, 0),
+  bgGreen:    colorGetter(42, 0),
+  bgYellow:   colorGetter(43, 0),
+  bgBlue:     colorGetter(44, 0),
+  bgMagenta:  colorGetter(45, 0),
+  bgCyan:     colorGetter(46, 0),
+  bgWhite:    colorGetter(47, 0),
+  bgGray:     colorGetter(100, 0),
+  bglRed:     colorGetter(101, 0),
+  bglGreen:   colorGetter(102, 0),
+  bglYellow:  colorGetter(103, 0),
+  bglBlue:    colorGetter(104, 0),
+  bglMagenta: colorGetter(105, 0),
+  bglCyan:    colorGetter(106, 0)
 
 };
+
+function colorGetter(num1, num2) {
+  return {
+    get: function() {
+      return `\x1B[${num1}m${this.valueOf()}\x1B[${num2}m`;
+    }
+  }
+}
 
 Object.defineProperties(String.prototype, getters);
 
